@@ -11,7 +11,7 @@ Install the following tools and make sure they are available on your `PATH`:
 - `curl`
 - A running [LibreTranslate](https://github.com/LibreTranslate/LibreTranslate) instance that supports Portuguese-to-English translation
 
-Start LibreTranslate at `http://localhost:5959/translate`, or change `LIBRETRANSLATE_API` in `translate.sh`.
+Start LibreTranslate at `http://localhost:5959/translate`, or change `LIBRETRANSLATE_API` in `lmt.sh`.
 
 ### Run LibreTranslate Locally
 ```bash
