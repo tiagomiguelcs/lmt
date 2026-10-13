@@ -2,6 +2,19 @@
 LIBRETRANSLATE_API="http://localhost:5959/translate"
 DOCS_DIR="docs"
 
+# Add rules here to mark HTML content that LibreTranslate should not translate.
+# See the commented example below for wrapping list-item content in
+# <span translate="no">...</span>.
+apply_translation_exclusions(){
+   :
+}
+
+# apply_translation_exclusions() {
+#    perl -i -0777 -pe 's{(<strong>Autores:</strong>\s*)(.*?)(</li>)}{$1<span translate="no">$2</span>$3}s' "$output"
+#    perl -i -0777 -pe 's{(<strong>Revisões:</strong>\s*)(.*?)(</li>)}{$1<span translate="no">$2</span>$3}s' "$output"
+#    perl -i -0777 -pe 's{(<strong>Edição/Revisão:</strong>\s*)(.*?)(</li>)}{$1<span translate="no">$2</span>$3}s' "$output"
+# }
+
 translate(){
     local format="$1"
     local t_file="$2"
@@ -43,6 +56,9 @@ for file in "$DOCS_DIR"/*.md; do
     echo "Processing: $file"
     # 1. Convert the current 'file' to html using pandoc
     translate "html" "$file"
+
+    # Apply translation exclusions rules
+    apply_translation_exclusions "$output"
 
     # 2. Translate the current 'file'
     echo "  > Translating : ${output##*/}"
