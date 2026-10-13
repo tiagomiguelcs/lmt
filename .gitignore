@@ -1,2 +1,3 @@
 /docs/*.md
 /docs/*.html
+.DS_Store
